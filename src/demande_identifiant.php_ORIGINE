@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<!-- Exemple de page php-->
+    <head>
+        <title>Visualisation compte</title>
+        <meta charset="utf-8" />
+    </head>
+    <body>
+    
+	<h2> Identifier vous pour visualiser votre compte</h2>
+	<p>
+	Pour s'identifier, il vous faut votre nom et votre mot de passe (nom tout en minuscule)
+	</p>
+
+	<!-- Debut du formulaire -->
+	<form method="post" action="visu_compte.php" >
+	
+		<p>Nom : <input type="text" name="nom" /input> </p> 
+		<p>Mot de passe  : <input type="password" name="mdp" /input> </p>	
+		
+		
+		<p> 
+		<input type="submit" name="valider " value="Visualiser solde compte" />
+		</form>
+		</p>
+	
+	</form>
+		
+		
+		<p>		
+	<li > <a href="index.html">Accueil</a> </li >
+	</p>
+		
+	
+    </body>
+</html>
