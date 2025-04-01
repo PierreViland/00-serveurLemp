@@ -18,8 +18,8 @@ server {
     index index.html index.php;
 
     # Définition des certificats SSL auto-signés
-    ssl_certificate /etc/nginx/ssl/serveurNginxCyber.crt;
-    ssl_certificate_key /etc/nginx/ssl/serveurNginxCyber.key;
+    ssl_certificate /etc/nginx/ssl/Nginx_Broce.crt;
+    ssl_certificate_key /etc/nginx/ssl/Nginx_Broce.key;
    # ssl_dhparam /etc/nginx/ssl/dhparam.pem;
 
 
