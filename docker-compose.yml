@@ -9,7 +9,7 @@ services:
     volumes:
       - ./src:/usr/local/apache2/htdocs  # Volume pour le contenu web
       - ./.docker/apache/conf/:/usr/local/apache2/conf/  # Configuration Apache personnalisée
-      - ./ssl/:/etc/ssl/
+      - ./openSSL/:/etc/ssl/
     networks:
       - mynet
 
