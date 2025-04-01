@@ -1,20 +1,18 @@
-version: '3.8'
-
 services:
   apache:
-    image: httpd:2.4
+
+    image: httpd:latest
     container_name: apachePV
     ports:
-      - "80:80"
-      - "443:443"
+      - "80:80"  # Expose le port 80 en HTTP
+      - "443:443" #HTTPS
     volumes:
-      - ./src:/var/www/html
-      - ./.docker/apache/conf:/usr/local/apache2/conf
-      - ./ssl:/usr/local/apache2/conf/ssl
+      - ./src:/usr/local/apache2/htdocs  # Volume pour le contenu web
+      - ./.docker/apache/conf/:/usr/local/apache2/conf/  # Configuration Apache personnalisée
+      - ./ssl/:/etc/ssl/
     networks:
       - mynet
-    depends_on:
-      - php
+
 
   php:
     image: test_php
@@ -37,17 +35,6 @@ services:
       - "3306:3306"
     volumes:
       - ./mysqldata:/var/lib/mysql
-    networks:
-      - mynet
-
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin:5
-    container_name: phpmyadminPV
-    ports:
-      - "8080:80"
-    environment:
-      PMA_HOST: mysql
-      PMA_PORT: 3306
     networks:
       - mynet
 

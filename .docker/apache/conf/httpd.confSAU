@@ -1,0 +1,58 @@
+# Directive pour écouter sur les ports 80 (HTTP) et 443 (HTTPS)
+Listen 80
+Listen 443
+
+# Chargement des modules nécessaires
+LoadModule mpm_event_module modules/mod_mpm_event.so
+LoadModule ssl_module modules/mod_ssl.so
+LoadModule alias_module modules/mod_alias.so
+LoadModule authz_core_module modules/mod_authz_core.so
+
+# Définir le répertoire des logs Apache
+Define APACHE_LOG_DIR /tmp/apache2
+
+# Définir le ServerName global pour éviter les warnings
+ServerName localhost
+
+# Configuration du VirtualHost pour HTTP (port 80)
+<VirtualHost *:80>
+    ServerAdmin webmaster@localhost
+    DocumentRoot /var/www/html
+    ServerName 192.168.1.110
+
+    # Redirection HTTP vers HTTPS
+    Redirect permanent / https://192.168.1.110/
+
+    # Configuration des permissions d'accès
+    <Directory /var/www/html>
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+
+    # Définir les fichiers de log
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+</VirtualHost>
+
+# Configuration du VirtualHost pour HTTPS (port 443)
+<VirtualHost *:443>
+    ServerAdmin webmaster@localhost
+    DocumentRoot /var/www/html
+    ServerName 192.168.1.110
+
+    # Activation de SSL
+    SSLEngine on
+    SSLCertificateFile /usr/local/apache2/conf/ssl/serveurNginxCyber.crt
+    SSLCertificateKeyFile /usr/local/apache2/conf/ssl/serveurNginxCyber.key
+
+    # Configuration des permissions d'accès
+    <Directory /var/www/html>
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+
+    # Définir les fichiers de log
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+</VirtualHost>
+
