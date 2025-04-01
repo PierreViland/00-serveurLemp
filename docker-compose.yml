@@ -1,62 +1,59 @@
+version: '3.8'
+
 services:
-  nginx:
-    image: nginx:1.18
-    container_name: nginxPV
+  apache:
+    image: httpd:2.4
+    container_name: apachePV
     ports:
-      - "80:80"  # Port hôte : Port conteneur
+      - "80:80"
       - "443:443"
     volumes:
-      - ./src:/var/www/php  # Montage du répertoire src de l'hôte dans /var/www/php du conteneur
-      - ./.docker/nginx/conf.d/default.d:/etc/nginx/conf.d/default.conf  # Configuration personnalisée de Nginx
-      - ./ssl/:/etc/nginx/ssl/ #Dossier pour les certificats	
-    working_dir: /var/www/php  # Répertoire de travail
-    depends_on:
-      - php  # Dépend du service php
+      - ./src:/var/www/html
+      - ./.docker/apache/conf:/usr/local/apache2/conf
+      - ./ssl:/usr/local/apache2/conf/ssl
     networks:
       - mynet
+    depends_on:
+      - php
 
-  # Service PHP
   php:
-    image: test_php  # Utilise l'image "test_php" (assurez-vous qu'elle est correctement configurée)
+    image: test_php
     container_name: phpPV
-    working_dir: /var/www/php  # Répertoire de travail
+    working_dir: /var/www/html
     volumes:
-      - ./src:/var/www/php  # Montage du répertoire src de l'hôte dans /var/www/php du conteneur
+      - ./src:/var/www/html
     depends_on:
-      - mysql  # Dépend du service MySQL
+      - mysql
     networks:
       - mynet
 
-  # Service MySQL
   mysql:
     image: mysql/mysql-server:8.0
     container_name: mysqlPV
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_ROOT_HOST: '%'  # Autorise la connexion de n'importe quel hôte
+      MYSQL_ROOT_HOST: '%'
     ports:
-      - "3306:3306"  # Port hôte : Port conteneur
+      - "3306:3306"
     volumes:
-      - ./mysqldata:/var/lib/mysql  # Connecte le volume mysqldata au répertoire de données de MySQL
+      - ./mysqldata:/var/lib/mysql
     networks:
       - mynet
 
-  # Service PhpMyAdmin
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:5
     container_name: phpmyadminPV
     ports:
-      - "8080:80"  # Port hôte : Port conteneur
+      - "8080:80"
     environment:
-      PMA_HOST: mysql  # Hôte de la base de données MySQL
-      PMA_PORT: 3306  # Port de la base de données MySQL
+      PMA_HOST: mysql
+      PMA_PORT: 3306
     networks:
       - mynet
 
 volumes:
-  mysqldata:  # Définition du volume pour les données MySQL
+  mysqldata:
     driver: local
 
 networks:
-  mynet:  # Définition du réseau
-
+  mynet:
