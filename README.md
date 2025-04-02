@@ -1,12 +1,18 @@
 # Site Internet Éducatif pour des failles basiques
 
-Ce dépôt propose une simulation d'un site internet de compte bancaire simplifié. Il permet de travailler sur les notions suivantes :
+Ce dépôt propose une simulation d'un site internet type compte bancaire simplifié. Il permet de travailler sur les notions suivantes :
 
 - Le hashage des mots de passe
 - L'injection SQL (niveau basique)
 - Les failles XSS (niveau basique)
 
-## Architecture
+Ce dépôt est constitué de 3 branches :
+- **main** : nginx et http
+- **httpsTest** : nginx et https
+- **httpsApache** : Apache et https
+
+
+## Architecture branche main
 
 Ce projet repose sur **quatre conteneurs Docker** :
 
