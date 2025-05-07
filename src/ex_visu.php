@@ -7,10 +7,8 @@
     </head>
     <body>
         <h2>Liste clients<h2> 
-		
 		<p>
-				
-		<?php
+	<?php
 		
 		$bdd = new PDO('mysql:host=mysql;port=3306;dbname=compte_visualisation;charset=utf8', 'root', 'root');		
 		
@@ -25,7 +23,7 @@
 						$reponse_bdd['Prenom'] . ' - XXXXXX  Euros'.'<br>';						
 			}
 		
-		?>
+		?>			
 	<p>		
 	<li > <a href="index.html">Accueil</a> </li >
 	</p>

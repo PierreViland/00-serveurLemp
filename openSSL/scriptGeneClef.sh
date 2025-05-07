@@ -4,23 +4,25 @@
 CA_KEY="ca.key"
 CA_CERT="ca.crt"
 CA_SERIAL="ca.srl"
-SERVER_KEY="server.key"
-SERVER_CSR="server.csr"
-SERVER_CERT="server.crt"
-SERVER_EXT="server.ext"
+SERVER_KEY="server_30.key"
+SERVER_CSR="server_30.csr"
+SERVER_CERT="server_30.crt"
+SERVER_EXT="server_30.ext"
 
 # Variables de la CA
 CA_CN="CA_Broce"
 
 # Variables du serveur
 SERVER_CN="ex_apache_sec.com"
-IP_SERVER="192.168.1.118"
-# Création de la CA
-echo "Création de la clé privée de la CA..."
-openssl genrsa -out $CA_KEY 2048
+IP_SERVER="192.168.1.30"
 
-echo "Création du certificat auto-signé de la CA..."
-openssl req -x509 -new -key $CA_KEY -sha256 -days 3650 -out $CA_CERT -subj "/CN=$CA_CN"
+
+# Création de la CA SI VOUS VOULEZ UN NOUVEAU CA => Decommente
+#echo "Création de la clé privée de la CA..."
+#openssl genrsa -out $CA_KEY 2048
+
+#echo "Création du certificat auto-signé de la CA..."
+#openssl req -x509 -new -key $CA_KEY -sha256 -days 3650 -out $CA_CERT -subj "/CN=$CA_CN"
 
 # Création de la clé privée du serveur
 echo "Création de la clé privée du serveur..."
@@ -40,5 +42,7 @@ EOF
 echo "Signature du certificat serveur avec la CA..."
 openssl x509 -req -in $SERVER_CSR -CA $CA_CERT -CAkey $CA_KEY -CAcreateserial -out $SERVER_CERT -days 365 -sha256 -extfile $SERVER_EXT -extensions v3_ext
 
-echo "Certificats générés avec succès."
+echo "Certificats générés avec succès => Certificat : "
+
+openssl x509 -in server_30.crt -text -noout
 
