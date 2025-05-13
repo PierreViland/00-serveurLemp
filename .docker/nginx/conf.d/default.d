@@ -17,11 +17,9 @@ server {
     root /var/www/php;
     index index.html index.php;
 
-    # Définition des certificats SSL auto-signés
+    # Définition des certificats SSL 
     ssl_certificate /etc/nginx/ssl/serveur_PV_30.crt;
     ssl_certificate_key /etc/nginx/ssl/serveur_PV_30.key;
-   # ssl_dhparam /etc/nginx/ssl/dhparam.pem;
-
 
     # Configuration de PHP via FastCGI
     location ~* \.php$ {
@@ -33,12 +31,10 @@ server {
 
     listen 127.0.0.1:9113;
     server_name localhost;
-
     location /nginx_status {
         stub_status;
         allow 127.0.0.1;   # ou ton IP de prometheus
         allow all;
     }
-
 }
 
