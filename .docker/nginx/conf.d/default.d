@@ -2,7 +2,7 @@ server {
     listen 80 default_server;
     root   /var/www/php;
     index  index.html;
-    server_name 192.168.1.118;
+    server_name 192.168.1.30;
 
     # Redirige toutes les requêtes HTTP vers HTTPS
     return 301 https://$host$request_uri;
@@ -12,7 +12,7 @@ server {
 server {
     listen 443 ssl http2;  # Activation du support HTTP/2 pour de meilleures performances
     listen [::]:443 ssl http2;
-    server_name 192.168.1.118;
+    server_name 192.168.1.30;
 
     root /var/www/php;
     index index.html index.php;
@@ -29,16 +29,16 @@ server {
         include fastcgi_params;
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
         fastcgi_param SCRIPT_NAME $fastcgi_script_name;
-}
+    }
 
+    listen 127.0.0.1:9113;
+    server_name localhost;
 
-#Attention toutes les métriques sont visibles par tous
-#Il faut restraindre
-#De plus, erreur de sécurité => Si Prometheuse n'est pas actif
-
-location /nginx_status {
+    location /nginx_status {
         stub_status;
-        allow all;  # À restreindre selon vos besoins de sécurité
-    }	
+        allow 127.0.0.1;   # ou ton IP de prometheus
+        allow all;
+    }
 
 }
+
