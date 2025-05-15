@@ -1,20 +1,20 @@
 #!/bin/bash
 
 # Définition des fichiers
-CA_KEY="ca.key"
-CA_CERT="ca.crt"
-CA_SERIAL="ca.srl"
-SERVER_KEY="server_30.key"
-SERVER_CSR="server_30.csr"
-SERVER_CERT="server_30.crt"
-SERVER_EXT="server_30.ext"
+CA_KEY="ca.key"   #Clef privee du CA
+CA_CERT="ca.crt"  #Certificat du CA
 
-# Variables de la CA
-CA_CN="CA_Broce"
+SERVER_KEY="server_30.key"  #Clef privee du serveur
+SERVER_CSR="server_30.csr"  #Certificat du serveur en attente de signature Certificate Signing Request
+SERVER_CERT="server_30.crt" #Certificat du serveur
+SERVER_EXT="server_30.ext"  #Contient des options pour la generation du certificat serveur (pas utilise apres)
+
+# Common name du CA
+CA_CN="CA_Broce"	#Nom courant du CA
 
 # Variables du serveur
-SERVER_CN="ex_apache_sec.com"
-IP_SERVER="192.168.1.30"
+SERVER_CN="ex_apache_sec.com"   #Nom courant du serveur
+IP_SERVER="192.168.1.30"        #Adresse IP du serveur
 
 
 # Création de la CA SI VOUS VOULEZ UN NOUVEAU CA => Decommente
@@ -43,6 +43,5 @@ echo "Signature du certificat serveur avec la CA..."
 openssl x509 -req -in $SERVER_CSR -CA $CA_CERT -CAkey $CA_KEY -CAcreateserial -out $SERVER_CERT -days 365 -sha256 -extfile $SERVER_EXT -extensions v3_ext
 
 echo "Certificats générés avec succès => Certificat : "
-
 openssl x509 -in server_30.crt -text -noout
 
