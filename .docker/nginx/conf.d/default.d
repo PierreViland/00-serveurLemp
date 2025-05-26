@@ -29,12 +29,14 @@ server {
         fastcgi_param SCRIPT_NAME $fastcgi_script_name;
     }
 
-    listen 127.0.0.1:9113;
+}
+
+server {
+    listen 9114;
     server_name localhost;
+
     location /nginx_status {
         stub_status;
-        allow 127.0.0.1;   # ou ton IP de prometheus
         allow all;
     }
 }
-
