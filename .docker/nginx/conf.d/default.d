@@ -11,15 +11,14 @@ server {
         fastcgi_param  SCRIPT_NAME     $fastcgi_script_name;
     }
 
+}
 
+server {
+    listen 9114;
+    server_name localhost;
 
-#Attention toutes les métriques sont visibles par tous
-#Il faut restraindre
-#De plus, erreur de sécurité => Si Prometheuse n'est pas actif
-
-location /nginx_status {
+    location /nginx_status {
         stub_status;
-        allow all;  # À restreindre selon vos besoins de sécurité
-    }	
-
+        allow all;
+    }
 }
