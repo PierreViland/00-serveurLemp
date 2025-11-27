@@ -15,7 +15,8 @@ services:
 
   # Service PHP
   php:
-    image: ./.docker/php  # Construction de l'image à partir du dockerfile php pour communication avec bdd
+    build: ./.docker/php  # Construction de l'image à partir du dockerfile php pour communication avec bdd
+    image: phpPV 
     container_name: phpPV
     working_dir: /var/www/php  # Répertoire de travail
     volumes:
@@ -57,5 +58,6 @@ volumes:
 
 networks:
   mynet:  # Définition du réseau
+
 
 
