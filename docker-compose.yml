@@ -37,6 +37,7 @@ services:
       - "3306:3306"  # Port hôte : Port conteneur
     volumes:
       - ./mysqldata:/var/lib/mysql  # Connecte le volume mysqldata au répertoire de données de MySQL
+      - ./init-db:/docker-entrypoint-initdb.d
     networks:
       - mynet
 

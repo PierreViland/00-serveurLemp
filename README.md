@@ -25,6 +25,12 @@ Ce projet repose sur **quatre conteneurs Docker** :
 
 ### 1. Création de l'image Docker
 
+L'image docker de php est créé automatiquement via : 
+```sh
+build: ./.docker/php  # Construction de l'image à partir du dockerfile php pour communication avec bdd
+image: phppv-image
+```
+Vous pouvez la créer manullement. En suivant la procédure ci-dessous : 
 Créez votre propre image à l'aide du fichier `Dockerfile`. Cette image doit être nommée `phpPV`.
 
 Exécutez les commandes suivantes :
@@ -50,7 +56,18 @@ sudo docker compose up -d
 - Accédez à **phpMyAdmin** via : `http://@ip:8080`
   - **Login** : `root`
   - **Mot de passe** : `root`
-- Importez le fichier `mysqlInit_serveurCyber.sql`
+
+La base de données est monté et crée automatiquement via : 
+```sh
+./init-db:/docker-entrypoint-initdb.d
+```
+Si elle ne se crée pas : 
+```sh
+sudo docker compose down -v 
+sudo rm -rf ./mysqldata
+sudo docker compose up -d
+```
+*Le volume monté doit absolument être supprimé*
 
 ### 4. Navigation sur le site wbeb
   
