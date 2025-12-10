@@ -30,7 +30,7 @@ USE `compte_visualisation`;
 --
 
 CREATE TABLE `bddHash` (
-  `ID` int NOT NULL,
+  `ID` int NOT NULL AUTO_INCREMENT,
   `Nom` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Prenom` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Mot_de_passe` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
