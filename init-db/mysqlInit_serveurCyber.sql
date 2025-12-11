@@ -34,7 +34,8 @@ CREATE TABLE `bddHash` (
   `Nom` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Prenom` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Mot_de_passe` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `solde` decimal(10,2) DEFAULT NULL
+  `solde` decimal(10,2) DEFAULT NULL, 
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
