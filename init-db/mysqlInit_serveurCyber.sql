@@ -30,12 +30,11 @@ USE `compte_visualisation`;
 --
 
 CREATE TABLE `bddHash` (
-  `ID` int NOT NULL AUTO_INCREMENT,
-  `Nom` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Prenom` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Mot_de_passe` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `solde` decimal(10,2) DEFAULT NULL, 
-  PRIMARY KEY (`ID`)
+  `ID` int NOT NULL,
+  `Nom` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Prenom` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Mot_de_passe` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `solde` decimal(10,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -52,4 +51,57 @@ INSERT INTO `bddHash` (`ID`, `Nom`, `Prenom`, `Mot_de_passe`, `solde`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `liste_compte`
+-- Structure de la table `bddNonHash`
+--
+
+CREATE TABLE `bddNonHash` (
+  `ID` int NOT NULL,
+  `Nom` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Prenom` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Mot_de_passe` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `solde` decimal(10,0) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `bddNonHash`
+--
+
+INSERT INTO `bddNonHash` (`ID`, `Nom`, `Prenom`, `Mot_de_passe`, `solde`) VALUES
+(1, 'viland', 'Pierre', 'ciel_connection2026', 87542);
+
+--
+-- Index pour les tables déchargées
+--
+
+--
+-- Index pour la table `bddHash`
+--
+ALTER TABLE `bddHash`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Index pour la table `bddNonHash`
+--
+ALTER TABLE `bddNonHash`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- AUTO_INCREMENT pour les tables déchargées
+--
+
+--
+-- AUTO_INCREMENT pour la table `bddHash`
+--
+ALTER TABLE `bddHash`
+  MODIFY `ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT pour la table `bddNonHash`
+--
+ALTER TABLE `bddNonHash`
+  MODIFY `ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
