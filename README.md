@@ -37,7 +37,7 @@ Exécutez les commandes suivantes :
 
 ```sh
 cd ./.docker/php/  # Accès au répertoire contenant le Dockerfile
-docker build -t phpPV .  # Construction de l'image Docker
+docker build -t phppv-image .  # Construction de l'image Docker
 cd ../..  # Retour à la racine du dépôt
 ```
 
