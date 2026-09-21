@@ -27,7 +27,7 @@
 			
 
 
-			$rep = $bdd->query("SELECT * from bddHash WHERE Nom ='".$_POST['nom']."' AND Mot_de_passe = '".$_POST['mdp']."'"  );
+			$rep = $bdd->query("SELECT * from bddNonHash WHERE Nom ='".$_POST['nom']."' AND Mot_de_passe = '".$_POST['mdp']."'"  );
 		
 			
 			// INjection : aa ' OR 1=1# (l plus imple mais pas propre

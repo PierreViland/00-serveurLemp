@@ -29,7 +29,7 @@
 			//$rep = $bdd->query("SELECT * from liste_compte WHERE Nom ='".$_POST['nom']."' AND Mot_de_passe = '".$_POST['mdp']."'"  );
 			
 			
-				$rep = $bdd->query("INSERT INTO bddHash (ID, Nom, Prenom, Mot_de_passe, solde) VALUES (NULL, '$nom', '$prenom', '$mdp', '$solde')");;
+				$rep = $bdd->query("INSERT INTO bddNonHash (ID, Nom, Prenom, Mot_de_passe, solde) VALUES (NULL, '$nom', '$prenom', '$mdp', '$solde')");;
 		echo "Compte créé";	
 			
 			

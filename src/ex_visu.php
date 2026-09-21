@@ -16,7 +16,7 @@
 		
 	
 		
-		$rep = $bdd->query('SELECT * FROM bddHash');
+		$rep = $bdd->query('SELECT * FROM bddNonHash');
 				
 			while ($reponse_bdd = $rep->fetch())
 			{		
