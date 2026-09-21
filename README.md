@@ -10,6 +10,7 @@ Ce dépôt est constitué de 3 branches :
 - **main** : nginx et http
 - **httpsTest** : nginx et https
 - **httpsApache** : Apache et https
+- **nginx-sanshash** : nginx non hashé et HTTP
 
 
 ## Architecture branche main
