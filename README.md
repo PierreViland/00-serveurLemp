@@ -6,11 +6,11 @@ Ce dépôt propose une simulation d'un site internet type compte bancaire simpli
 - L'injection SQL (niveau basique)
 - Les failles XSS (niveau basique)
 
-Ce dépôt est constitué de 3 branches :
+Ce dépôt est constitué de 4 branches :
 - **main** : nginx et http
 - **httpsTest** : nginx et https
 - **httpsApache** : Apache et https
-
+- **httpAll** :  LEMP en https et http (:80 => mdp hashé et : 8181 => mdp non hashé) 
 
 ## Architecture branche main
 

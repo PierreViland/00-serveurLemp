@@ -2,17 +2,17 @@
 CA_KEY="ca.key"   #Clef privee du CA
 CA_CERT="ca.crt"  #Certificat du CA
 
-SERVER_KEY="server_69.key"  #Clef privee du serveur
-SERVER_CSR="server_69.csr"  #Certificat du serveur en attente de signature Certificate Signing Request
-SERVER_CERT="server_69.crt" #Certificat du serveur
-SERVER_EXT="server_69.ext"  #Contient des options pour la generation du certificat serveur (pas utilise apres)
+SERVER_KEY="serverHTTPs.key"  #Clef privee du serveur
+SERVER_CSR="serverHTTPs.csr"  #Certificat du serveur en attente de signature Certificate Signing Request
+SERVER_CERT="serverHTTPs.crt" #Certificat du serveur
+SERVER_EXT="serverHTTPs.ext"  #Contient des options pour la generation du certificat serveur (pas utilise apres)
 
 # Common name du CA
 CA_CN="CA_Brreq"	#Nom courant du CA
 
 # Variables du serveur
 SERVER_CN="ex_nginx_sec.com"   #Nom courant du serveur
-IP_SERVER="192.168.1.127"        #Adresse IP du serveur
+IP_SERVER="192.168.1.18"        #Adresse IP du serveur
 
 
 # Création de la CA SI VOUS VOULEZ UN NOUVEAU CA => Decommente

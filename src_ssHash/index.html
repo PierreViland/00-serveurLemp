@@ -1,26 +1,33 @@
 <!DOCTYPE html>
 <html>
-	<!-- Exemple de page php-->
+        <!-- Exemple de page php-->
     <head>
         <title>Banque par PV</title>
         <meta charset="utf-8" />
     </head>
-    <réation de la base de données `compte_visualisation`
-    CREATE DATABASE IF NOT EXISTS `compte_visualisation` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+    <body>
+        <main>
+            <h1>Banque par PV</h1>
+	    <h2>Site très simple de tests SQL et XSS</h2>
+	    
+            <ul>
+                <li><a href="ajout_client.php">Ajout client</a></li>
+                <li><a href="demande_identifiant.php">Consultation du solde</a></li>
+                <li><a href="ex_visu.php">Visualisation de tous les clients</a></li>
+            </ul>
+        </main>	
+	<small>Version sans hashé de mot de passe</small>
 
-    -- Sélection de la base de données `compte_visualisation`
-    USE `compte_visualisation`;
+        <hr>
+        <p class="note">Trois versions sont disponibles </p>
+        <ul>
+                <li> https://@ip => Version http avec hash</li>
+                <li> http://@ip:8181 => version http sans hash</li>
+                <li> https://@ip => version http avec hash</li>
+        </ul
+        </p>
     
-	<h2>Site très simple de tests SQL et XSS</h2>
-        <p>Version simplifiée-sans 'chat'
-	</p>
-		
-	<p>		
-	<li > <a href="ajout_client.php">Ajout client</a> </li >
-	<li > <a href="demande_identifiant.php">Consultation du solde</a> </li >
-	<li > <a href="ex_visu.php">Visualisation de tous les clients</a> </li >
-	</p>
-		
-	
     </body>
+
 </html>
+      
